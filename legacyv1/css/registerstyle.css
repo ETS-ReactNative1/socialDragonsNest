@@ -1,0 +1,80 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#ffffff;  
+    font-family: 'Arial';  
+}  
+.login{  
+    width: 382px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 80px;  
+    background: #07294D;  
+    border-radius: 15px ;  
+          
+} 
+#Phone{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+} 
+#Email{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+} 
+#Age{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+h2{  
+    text-align: center;  
+    color: #07294D;  
+    padding: 20px;  
+}  
+label{  
+    color: #FFC600;  
+    font-size: 17px;  
+}  
+#Profname{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+#Pass{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+#log{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+  
+  
+}  
+span{  
+    color: #cbcbcb;  
+    font-size: 17px;  
+}  
+ 
