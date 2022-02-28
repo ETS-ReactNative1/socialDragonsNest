@@ -1,2 +1,4 @@
 # socialDragonsNest
-CCI Social Media App for CI 103 Project :) 
+Social media platform for connecting individuals around CCI based on whatever work they can collaborate on! 
+
+Features: 
