@@ -13,4 +13,4 @@ Checking Notifications:
 
 On the navigation bar, you should be able to see a bell sign and clicking on that will lead you to see whatever notifications you may have had after logging back in! 
 
-React.js + Firebase was used to build this! 
+React.js + Firebase + Material UI was used to build this! 
