@@ -9,4 +9,8 @@ You can update your update your profile photo on this page (towards the right) b
 
 You can like as many posts as you want, depending on whatever work you are interested in, as well as comment! You can also of course, create your own post, based on whatever project you are working on, or whatever you are seeking through the socialDragonNest! To do this, there is a + button on the navigation bar of the site. 
 
-Notifications - On the navigation bar, you should be able to see a bell sign and clicking on that will lead you to see whatever notifications you may have had after logging back in! 
+Checking Notifications:
+
+On the navigation bar, you should be able to see a bell sign and clicking on that will lead you to see whatever notifications you may have had after logging back in! 
+
+React.js + Firebase was used to build this! 
