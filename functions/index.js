@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
-const { serviceAccountFromShorthand } = require("firebase-functions/lib/common/encoding");
+// const { serviceAccountFromShorthand } = require("firebase-functions/lib/common/encoding");
 
 admin.initializeApp();
 // Create and Deploy Your First Cloud Functions
