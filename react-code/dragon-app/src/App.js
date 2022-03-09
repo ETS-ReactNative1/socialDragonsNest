@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import { createTheme } from '@mui/material/styles';
+import {ThemeProvider as MuiThemeProvider} from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import jwtDecode from 'jwt-decode';
 // Redux elements 
 import { Provider } from 'react-redux';
@@ -14,14 +14,14 @@ import Navbar from './components/layout/Navbar';
 import themeObject from './util/theme';
 import AuthRoute from './util/authRoute';
 // screens
-import home from './screens/home';
+import Home from './screens/home';
 import login from './screens/login';
 import register from './screens/register';
 import user from './screens/user';
 
-// import axios from 'axios';
+import axios from 'axios';
 
-const theme = createMuiTheme(themeObject);
+const theme = createTheme(themeObject);
 
 // axios.defaults.baseURL =
 //   'https://europe-west1-socialape-d081e.cloudfunctions.net/api';
@@ -47,8 +47,8 @@ class App extends Component {
           <Router>
             <Navbar />
             <div className="container">
-              <Switch>
-                <Route exact path="/" component={home} />
+              <Routes>
+                <Route exact path="/" component={Home} />
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/register" component={register} />
                 <Route exact path="/users/:handle" component={user} />
@@ -57,7 +57,7 @@ class App extends Component {
                   path="/users/:handle/post/:postId"
                   component={user}
                 />
-              </Switch>
+              </Routes>
             </div>
           </Router>
         </Provider>

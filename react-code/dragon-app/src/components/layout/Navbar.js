@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import MyButton from '../../util/MyButton';
+import MyButton from '../../util/myButton';
 import PostScream from '../post/postAPost';
 import Notifs from './Notifs';
 //material UI references
@@ -27,7 +27,7 @@ class Navbar extends Component {
                   <HomeIcon />
                 </MyButton>
               </Link>
-              <Notifications />
+              <Notifs />
             </Fragment>
           ) : (
             <Fragment>

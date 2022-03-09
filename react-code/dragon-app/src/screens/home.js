@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 
-import post from '../components/post/Post';
-import Profile from '../components/profileStuff/Profile';
-import PostSkeleton from '../util/PostSkeleton';
+import post from '../components/post/post';
+import Profile from '../components/profileStuff/profile';
+import PostSkeleton from '../util/postSkeleton';
 
 import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/dataActions';
 
-class home extends Component {
+class Home extends Component {
   componentDidMount() {
     this.props.getPosts();
   }
@@ -21,7 +21,7 @@ class home extends Component {
       <postSkeleton />
     );
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={10}>
         <Grid item sm={8} xs={12}>
           {recentPostsMarkup}
         </Grid>
@@ -33,7 +33,7 @@ class home extends Component {
   }
 }
 
-home.propTypes = {
+Home.propTypes = {
   getPosts: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 };
@@ -45,4 +45,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { getPosts }
-)(home);
+)(Home);

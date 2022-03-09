@@ -1,8 +1,8 @@
 
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-// import dayjs from 'dayjs';
-// import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
 
 import Menu from '@material-ui/core/Menu';
@@ -40,7 +40,7 @@ class Notifs extends Component {
     dayjs.extend(relativeTime);
 
     let notifsIcon;
-    if (notifs && notifications.length > 0) {
+    if (notifs && notifs.length > 0) {
       notifs.filter((not) => not.read === false).length > 0
         ? (notifsIcon = (
             <Badge
@@ -49,12 +49,12 @@ class Notifs extends Component {
               }
               color="secondary"
             >
-              <NotifsIcon />
+              <NotificationsIcon />
             </Badge>
           ))
-        : (notifsIcon = <NotifsIcon />);
+        : (notifsIcon = <NotificationsIcon />);
     } else {
-      notifsIcon = <NotifssIcon />;
+      notifsIcon = <NotificationsIcon />;
     }
     let notifsMarkup =
       notifs && notifs.length > 0 ? (
@@ -105,7 +105,7 @@ class Notifs extends Component {
           onClose={this.handleClose}
           onEntered={this.onMenuOpened}
         >
-          {notifssMarkup}
+          {notifsMarkup}
         </Menu>
       </Fragment>
     );

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
-// import dayjs from 'dayjs';
-// import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
-import MyButton from '../../util/MyButton';
-import DeletePost from './DeletePost';
-import postDialog from './postDialog';
-import LikeIcon from './LikeIcon';
+import MyButton from '../../util/myButton';
+import DeletePost from './deletePost';
+import PostDialog from './postDialog';
+import LikeIcon from './likeIcon';
 //material UI 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -78,7 +78,7 @@ class Post extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
-          <LikeButton postId={postId} />
+          <LikeIcon postId={postId} />
           <span>{likeCount} Likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
