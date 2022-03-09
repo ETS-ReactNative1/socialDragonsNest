@@ -13,13 +13,13 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 // Redux stuff
 import { connect } from 'react-redux';
-import { signupUser } from '../redux/actions/userActions';
+import { registerUser } from '../redux/actions/userActions';
 
 const styles = (theme) => ({
   ...theme
 });
 
-class signup extends Component {
+class register extends Component {
   constructor() {
     super();
     this.state = {
@@ -46,7 +46,7 @@ class signup extends Component {
       confirmPassword: this.state.confirmPassword,
       handle: this.state.handle
     };
-    this.props.signupUser(newUserData, this.props.history);
+    this.props.registerUser(newUserData, this.props.history);
   };
   handleChange = (event) => {
     this.setState({
@@ -66,7 +66,7 @@ class signup extends Component {
         <Grid item sm>
           <img src={AppIcon} alt="monkey" className={classes.image} />
           <Typography variant="h2" className={classes.pageTitle}>
-            SignUp
+            Register
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
@@ -129,14 +129,14 @@ class signup extends Component {
               className={classes.button}
               disabled={loading}
             >
-              SignUp
+              Register
               {loading && (
                 <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
             <br />
             <small>
-              Already have an account ? Login <Link to="/login">here</Link>
+              Already have an account?! Login <Link to="/login">here</Link>
             </small>
           </form>
         </Grid>
@@ -146,11 +146,11 @@ class signup extends Component {
   }
 }
 
-signup.propTypes = {
+register.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
-  signupUser: PropTypes.func.isRequired
+  registerUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -160,5 +160,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { signupUser }
-)(withStyles(styles)(signup));
+  { registerUser }
+)(withStyles(styles)(register));
