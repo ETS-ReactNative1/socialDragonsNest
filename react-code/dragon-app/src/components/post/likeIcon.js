@@ -9,7 +9,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import { connect } from 'react-redux';
 import { likePost, unlikePost } from '../../redux/actions/dataActions';
 
-export class LikeButton extends Component {
+export class LikeIcon extends Component {
   likedPost = () => {
     if (
       this.props.user.likes &&
@@ -28,7 +28,7 @@ export class LikeButton extends Component {
   };
   render() {
     const { authenticated } = this.props.user;
-    const likeButton = !authenticated ? (
+    const likeIcon = !authenticated ? (
       <Link to="/login">
         <MyButton tip="Like">
           <FavoriteBorder color="primary" />
@@ -43,11 +43,11 @@ export class LikeButton extends Component {
         <FavoriteBorder color="primary" />
       </MyButton>
     );
-    return likeButton;
+    return likeIcon;
   }
 }
 
-LikeButton.propTypes = {
+LikeIcon.propTypes = {
   user: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
   likePost: PropTypes.func.isRequired,
@@ -66,4 +66,4 @@ const mapActionsToProps = {
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(LikeButton);
+)(LikeIcon);

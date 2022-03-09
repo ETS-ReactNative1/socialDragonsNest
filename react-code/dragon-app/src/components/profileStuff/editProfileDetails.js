@@ -1,4 +1,3 @@
-//CHANGE
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -23,7 +22,7 @@ const styles = (theme) => ({
   }
 });
 
-class EditDetails extends Component {
+class EditProfileDetails extends Component {
   state = {
     bio: '',
     website: '',
@@ -131,7 +130,7 @@ class EditDetails extends Component {
   }
 }
 
-EditDetails.propTypes = {
+EditProfileDetails.propTypes = {
   editUserDetails: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired
 };
@@ -143,4 +142,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { editUserDetails }
-)(withStyles(styles)(EditDetails));
+)(withStyles(styles)(EditProfileDetails));

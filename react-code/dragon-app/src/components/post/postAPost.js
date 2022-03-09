@@ -14,7 +14,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 // Redux stuff
 import { connect } from 'react-redux';
-import { postAPost, clearErrors } from '../../redux/actions/dataActions';
+import { postPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme,
@@ -127,7 +127,7 @@ class postAPost extends Component {
 }
 
 postAPost.propTypes = {
-  post: PropTypes.func.isRequired,
+  postPost: PropTypes.func.isRequired,
   clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
@@ -138,5 +138,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { postAPost, clearErrors }
+  { postPost, clearErrors }
 )(withStyles(styles)(postAPost));
