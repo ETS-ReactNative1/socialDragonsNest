@@ -1,4 +1,12 @@
 import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+import {
     SET_USER,
     SET_ERRORS,
     CLEAR_ERRORS,
@@ -27,10 +35,10 @@ import {
       });
   };
   
-  export const signupUser = (newUserData, history) => (dispatch) => {
+  export const registerUser = (newUserData, history) => (dispatch) => {
     dispatch({ type: LOADING_UI });
     axios
-      .post('/signup', newUserData)
+      .post('/register', newUserData)
       .then((res) => {
         setAuthorizationHeader(res.data.token);
         dispatch(getUserData());
@@ -86,7 +94,7 @@ import {
   
   export const markNotificationsRead = (notificationIds) => (dispatch) => {
     axios
-      .post('/notifications', notificationIds)
+      .post('/notifs', notificationIds)
       .then((res) => {
         dispatch({
           type: MARK_NOTIFICATIONS_READ
