@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 
-import post from '../components/post/post';
+import post from '../components/post/Post';
 import Profile from '../components/profileStuff/Profile';
 import PostSkeleton from '../util/PostSkeleton';
 
@@ -16,7 +16,7 @@ class home extends Component {
   render() {
     const { posts, loading } = this.props.data;
     let recentPostsMarkup = !loading ? (
-      posts.map((posts) => <posts key={post.postId} post={post} />)
+      posts.map((Post) => <posts key={post.postId} post={post} />)
     ) : (
       <postSkeleton />
     );

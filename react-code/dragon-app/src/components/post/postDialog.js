@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
-import LikeButton from './LikeButton';
+import Likeicon from './LikeIcon';
 import Comments from './Comments';
-import CommentForm from './CommentForm';
-import dayjs from 'dayjs';
+import Comment from './Comment';
+// import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 
 import Dialog from '@material-ui/core/Dialog';

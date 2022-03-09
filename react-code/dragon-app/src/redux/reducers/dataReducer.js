@@ -45,7 +45,7 @@ import {
         return {
           ...state
         };
-      case DELETE_postM:
+      case DELETE_POST:
         index = state.posts.findIndex(
           (post) => post.postId === action.payload
         );

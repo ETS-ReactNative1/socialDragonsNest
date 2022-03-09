@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import post from '../components/post/post';
-import StaticProfile from '../components/profile/StaticProfile';
+import post from '../components/post/Post';
+import StaticProfile from '../components/profileStuff/AStaticProfile';
 import Grid from '@material-ui/core/Grid';
 
-import PostSkeleton from '../util/postSkeleton';
+import PostSkeleton from '../util/PostSkeleton';
 import ProfileSkeleton from '../util/ProfileSkeleton';
 
 import { connect } from 'react-redux';

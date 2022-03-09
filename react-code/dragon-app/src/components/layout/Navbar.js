@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MyButton from '../../util/MyButton';
-import PostScream from '../scream/PostScream';
-import Notifications from './notifications';
+import PostScream from '../post/postAPost';
+import Notifs from './Notifs';
 //material UI references
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
