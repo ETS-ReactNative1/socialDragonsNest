@@ -1,27 +1,3 @@
-// const functions = require("firebase-functions");
-// const admin = require('firebase-admin');
-// const { serviceAccountFromShorthand } = require("firebase-functions/lib/common/encoding");
-// admin.initializeApp();
-
-//LEARNING POSTMAN, testing GET requests etc: 
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   response.send('Hello world');
-// });
-
-
-// exports.getPosts = functions.https.onRequest((req, res) => {
-//     admin.firestore().collection('posts').get()
-//     .then(data => {
-//         let posts = []
-//         data.forEach(doc => {
-//             posts.push(doc.data());
-//         });
-//         return res.json(posts);
-//     })
-//     .catch(err => console.error(err)); 
-// })
-
-
 const functions = require('firebase-functions');
 const app = require('express')();
 const FBAuth = require('./util/fbAuth');
@@ -33,7 +9,7 @@ const { db } = require('./util/admin');
 
 const {
   getAllPosts,
-  postAPost,
+  ostAPost,
   getPost,
   commentOnPost,
   likeAPost,
@@ -50,7 +26,7 @@ const {
   markTheNotificationsAsRead
 } = require('./handlers/users');
 
-// Posts routes 
+// Routes for Posts 
 app.get('/posts', getAllPosts);
 app.post('/post', FBAuth, postAPost);
 app.get('/post/:postId', getPost);
@@ -59,7 +35,7 @@ app.get('/post/:postId/like', FBAuth, likeAPost);
 app.get('/post/:postId/unlike', FBAuth, unlikeAPost);
 app.post('/post/:postId/comment', FBAuth, commentOnPost);
 
-// users routes
+// Routes for Users
 app.post('/signup', registration);
 app.post('/login', login);
 app.post('/user/image', FBAuth, uploadImage);
@@ -67,8 +43,7 @@ app.post('/user', FBAuth, addUserStuff);
 app.get('/user', FBAuth, getAuthedUser);
 app.get('/user/:handle', getUserStuff);
 app.post('/notifications', FBAuth, markTheNotificationsAsRead);
-
-exports.api = functions.region('us-central').https.onRequest(app);
+exports.api = functions.region('europe-west1').https.onRequest(app);
 
 exports.generateNotifsOnLike = functions
   .region('us-central')
@@ -94,6 +69,7 @@ exports.generateNotifsOnLike = functions
       })
       .catch((err) => console.error(err));
   });
+
 exports.deleteNotifsOnUnlike = functions
   .region('us-central')
   .firestore.document('likes/{id}')
@@ -106,12 +82,12 @@ exports.deleteNotifsOnUnlike = functions
         return;
       });
   });
-exports.createNotifsOnComment = functions
+  exports.createNotifsOnComment = functions
   .region('us-central')
   .firestore.document('comments/{id}')
   .onCreate((snapshot) => {
     return db
-      .doc(`/posts/${snapshot.data().screamId}`)
+      .doc(`/posts/${snapshot.data().postId}`)
       .get()
       .then((doc) => {
         if (
@@ -124,7 +100,7 @@ exports.createNotifsOnComment = functions
             sender: snapshot.data().userHandle,
             type: 'comment',
             read: false,
-            screamId: doc.id
+            postId: doc.id
           });
         }
       })
@@ -149,19 +125,19 @@ exports.onUserImageChange = functions
         .get()
         .then((data) => {
           data.forEach((doc) => {
-            const scream = db.doc(`/posts/${doc.id}`);
-            batch.update(scream, { userImage: change.after.data().imageUrl });
+            const post = db.doc(`/posts/${doc.id}`);
+            batch.update(post, { userImage: change.after.data().imageUrl });
           });
           return batch.commit();
         });
     } else return true;
   });
 
-exports.onScreamDelete = functions
-  .region('us-central')
+exports.onPostDelete = functions
+  .region('europe-west1')
   .firestore.document('/posts/{postId}')
   .onDelete((snapshot, context) => {
-    const screamId = context.params.screamId;
+    const postId = context.params.postId;
     const batch = db.batch();
     return db
       .collection('comments')
@@ -173,7 +149,7 @@ exports.onScreamDelete = functions
         });
         return db
           .collection('likes')
-          .where('screamId', '==', postId)
+          .where('postId', '==', postId)
           .get();
       })
       .then((data) => {
@@ -182,7 +158,7 @@ exports.onScreamDelete = functions
         });
         return db
           .collection('notifications')
-          .where('screamId', '==', postId)
+          .where('postId', '==', postId)
           .get();
       })
       .then((data) => {
@@ -194,6 +170,13 @@ exports.onScreamDelete = functions
       .catch((err) => console.error(err));
   });
 
-
-
+// const config = {
+//   apiKey: "AIzaSyBspB_6dUdXqp79rvmvun9C6KHBC3v-pAs",
+//   authDomain: "socialdragonsnest.firebaseapp.com",
+//   projectId: "socialdragonsnest",
+//   storageBucket: "socialdragonsnest.appspot.com",
+//   messagingSenderId: "654478438294",
+//   appId: "1:654478438294:web:e87896f02a9324e89df7b7",
+//   measurementId: "G-9QWX84F5KD"
+// };
 

@@ -49,7 +49,7 @@ exports.signup = (req, res) => {
         handle: newUser.handle,
         email: newUser.email,
         createdAt: new Date().toISOString(),
-        //TODO Append token to imageUrl. Work around just add token from image in storage.
+        //this is used for appending token to imageURL, we have to work around and just add from image in storage for this --> 
         imageUrl: `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${noImg}?alt=media`,
         userId,
       };
@@ -122,7 +122,7 @@ exports.getUserStuff = (req, res) => {
       if (doc.exists) {
         userData.user = doc.data();
         return db
-          .collection("screams")
+          .collection("posts")
           .where("userHandle", "==", req.params.handle)
           .orderBy("createdAt", "desc")
           .get();
@@ -131,9 +131,9 @@ exports.getUserStuff = (req, res) => {
       }
     })
     .then((data) => {
-      userData.screams = [];
+      userData.posts = [];
       data.forEach((doc) => {
-        userData.screams.push({
+        userData.posts.push({
           body: doc.data().body,
           createdAt: doc.data().createdAt,
           userHandle: doc.data().userHandle,
