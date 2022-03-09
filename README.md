@@ -28,3 +28,19 @@ React.js + Firebase + Material UI + Express + Redux
 Developers:
 
 Akriti Keswani, Irving Fenochio, Stephen Sherlock, Christian Fiore, Luke Forwood
+
+____________________________________________________________________________________
+
+For running the React Application natively: 
+
+Make sure the repo has been cloned.
+
+Navigate to the react-code/dragon-app directory within the repo.
+
+Run npm install.
+
+Run npm start to initiate the React server.
+
+A local port running the project should automatically open. 
+
+Ctrl + C to exit the server and stop running. 
