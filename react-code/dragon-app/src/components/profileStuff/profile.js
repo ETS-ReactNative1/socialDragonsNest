@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
-// import dayjs from 'dayjs';
-import EditDetails from './EditProfileDetails';
-import MyButton from '../../util/MyButton';
-import ProfileSkeleton from '../../util/ProfileSkeleton';
+import dayjs from 'dayjs';
+import EditDetails from './editProfileDetails';
+import MyButton from '../../util/myButton';
+import ProfileSkeleton from '../../util/profileSkeleton';
 
 // material UI
 import Button from '@material-ui/core/Button';

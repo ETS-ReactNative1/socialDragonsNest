@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import MyButton from '../../util/MyButton';
-import Likeicon from './LikeIcon';
-import Comments from './Comments';
-import Comment from './Comment';
-// import dayjs from 'dayjs';
+import MyButton from '../../util/myButton';
+import Comments from './comments';
+import Comment from './comment';
+import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
+import LikeIcon from './likeIcon';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -117,7 +117,7 @@ class postDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
-          <LikeButton postId={postId} />
+          <LikeIcon postId={postId} />
           <span>{likeCount} likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
@@ -125,7 +125,7 @@ class postDialog extends Component {
           <span>{commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
-        <CommentForm screamId={screamId} />
+        <Comment postId={postId} />
         <Comments comments={comments} />
       </Grid>
     );
