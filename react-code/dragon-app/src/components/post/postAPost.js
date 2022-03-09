@@ -14,7 +14,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 // Redux stuff
 import { connect } from 'react-redux';
-import { postScream, clearErrors } from '../../redux/actions/dataActions';
+import { postAPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme,
@@ -33,7 +33,7 @@ const styles = (theme) => ({
   }
 });
 
-class PostScream extends Component {
+class postAPost extends Component {
   state = {
     open: false,
     body: '',
@@ -61,7 +61,7 @@ class PostScream extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postScream({ body: this.state.body });
+    this.props.postAPost({ body: this.state.body });
   };
   render() {
     const { errors } = this.state;
@@ -71,7 +71,7 @@ class PostScream extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="Post a Scream!">
+        <MyButton onClick={this.handleOpen} tip="Post a Post!">
           <AddIcon />
         </MyButton>
         <Dialog
@@ -87,16 +87,16 @@ class PostScream extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Post a new scream</DialogTitle>
+          <DialogTitle>Post a new post!</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"
-                label="SCREAM!!"
+                label="Post!!"
                 multiline
                 rows="3"
-                placeholder="Scream at your fellow apes"
+                placeholder="Post to connect with your fellow CCI folks!"
                 error={errors.body ? true : false}
                 helperText={errors.body}
                 className={classes.textField}
@@ -126,8 +126,8 @@ class PostScream extends Component {
   }
 }
 
-PostScream.propTypes = {
-  postScream: PropTypes.func.isRequired,
+postAPost.propTypes = {
+  post: PropTypes.func.isRequired,
   clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
